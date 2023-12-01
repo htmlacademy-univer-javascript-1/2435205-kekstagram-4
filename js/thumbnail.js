@@ -10,6 +10,8 @@ const createPicture = (picture) => {
   currentPicture.querySelector('.picture__comments').textContent = picture.comments.length;
   currentPicture.querySelector('.picture__likes').textContent = picture.likes;
 
+  currentPicture.dataset.id = picture.id;
+
   pictureFragments.append(currentPicture);
 
 };
