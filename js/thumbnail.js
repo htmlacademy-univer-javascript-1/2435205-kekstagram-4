@@ -1,3 +1,5 @@
+import {showBigPicture} from './large-Image.js';
+
 const pictureFragments = document.createDocumentFragment();
 const picturesTemplate = document.querySelector('#picture')
   .content
@@ -10,8 +12,13 @@ const createPicture = (picture) => {
   currentPicture.querySelector('.picture__comments').textContent = picture.comments.length;
   currentPicture.querySelector('.picture__likes').textContent = picture.likes;
 
+  const onPictureClick = (evt) => {
+    evt.preventDefault();
+    showBigPicture(picture);
+  };
   currentPicture.dataset.id = picture.id;
 
+  currentPicture.addEventListener('click', onPictureClick);
   pictureFragments.append(currentPicture);
 
 };
