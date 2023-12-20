@@ -1,10 +1,11 @@
-import {createPhotoDescription} from './data.js';
-import {createPictures} from './thumbnail.js';
-import './large-Image.js';
-import {initForm} from './form.js';
-import './hashtag.js';
+import {uploadForm} from './form.js';
+import {setData} from './fetch.js';
+import {onRecieveSuccess, showUnloadingErrorMessage} from './uploadData.js';
 
-const pictures = Array.from({length: 25}, createPhotoDescription());
-createPictures(pictures);
-initForm();
+setData(onRecieveSuccess,
+  () => {
+    showUnloadingErrorMessage('Не удалось загрузить данные из сервера :(');
+  },
+  'GET');
+uploadForm();
 
