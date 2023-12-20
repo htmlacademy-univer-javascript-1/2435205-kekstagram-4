@@ -1,3 +1,5 @@
+import { declineByNumber } from './util.js';
+
 const MAX_NEW_COMMENTS_COUNT = 5;
 
 const bigPicture = document.querySelector('.big-picture');
@@ -40,7 +42,8 @@ const addNewComments = () => {
     loadingButton.classList.add('hidden');
   }
 
-  commentsCountItem.innerHTML = `${addedCommentsCount} из <span class="comments-count">${commentsOverallCount}</span> комментариев`;
+  commentsCountItem.innerHTML = `${addedCommentsCount} из <span class="comments-count">${commentsOverallCount}</span>
+  ${declineByNumber(commentsOverallCount, 'комментарий', 'комментария', 'комментариев')}`;
 };
 
 const setComments = (comments) => {
@@ -56,4 +59,4 @@ loadingButton.addEventListener('click', () => {
   addNewComments(maxCommentsMultiplyer++);
 });
 
-export { setComments };
+export { setComments, bigPicture };
